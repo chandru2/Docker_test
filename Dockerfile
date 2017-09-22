@@ -2,7 +2,7 @@
 # Nginx Dockerfile
 #
 # https://github.com/dockerfile/nginx
-#MAINTAINER achandrashekar@zeomega.com
+# MAINTAINER achandrashekar@zeomega.com
 
 # Pull base image.
 FROM dockerfile/ubuntu
@@ -29,3 +29,4 @@ CMD ["nginx"]
 EXPOSE 80
 EXPOSE 443
 EXPOSE 8080
+EXPOSE 8082
