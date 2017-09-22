@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y nginx; \
 
  # Expose HTTP
  EXPOSE 80
+ EXPOSE 8080
 
  # Start nginx
  CMD ["/usr/sbin/nginx"]
