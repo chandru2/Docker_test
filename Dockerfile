@@ -2,7 +2,7 @@
 # Nginx Dockerfile
 #
 # https://github.com/dockerfile/nginx
-#
+#MAINTAINER achandrashekar@zeomega.com
 
 # Pull base image.
 FROM dockerfile/ubuntu
