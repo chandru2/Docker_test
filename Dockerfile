@@ -1,32 +1,15 @@
-#
-# Nginx Dockerfile
-#
-# https://github.com/dockerfile/nginx
-# MAINTAINER achandrashekar@zeomega.com
+# Pull base image
+FROM debian:latest
 
-# Pull base image.
-FROM dockerfile/ubuntu
+# Dockerfile Maintainer
+MAINTAINER achandrashekar@zeomega.com
 
-# Install Nginx.
-RUN \
-  add-apt-repository -y ppa:nginx/stable && \
-  apt-get update && \
-  apt-get install -y nginx && \
-  rm -rf /var/lib/apt/lists/* && \
-  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
-  chown -R www-data:www-data /var/lib/nginx
+# Install nginx and adjust nginx config to stay in foreground
+RUN apt-get update && apt-get install --no-install-recommends -y nginx; \
+ echo "daemon off;" >> /etc/nginx/nginx.conf
 
-# Define mountable directories.
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
+ # Expose HTTP
+ EXPOSE 80
 
-# Define working directory.
-WORKDIR /etc/nginx
-
-# Define default command.
-CMD ["nginx"]
-
-# Expose ports.
-EXPOSE 80
-EXPOSE 443
-EXPOSE 8080
-EXPOSE 8082
+ # Start nginx
+ CMD ["/usr/sbin/nginx"]
